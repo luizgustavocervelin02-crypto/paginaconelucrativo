@@ -1,0 +1,1 @@
+const fs = require('fs'); let html = fs.readFileSync('rendered.html', 'utf8'); html = html.replace(/src=\"\/assets/g, 'src=\"https://conesportabombom.netlify.app/assets').replace(/href=\"\/assets/g, 'href=\"https://conesportabombom.netlify.app/assets'); fs.writeFileSync('index.html', html, 'utf8');

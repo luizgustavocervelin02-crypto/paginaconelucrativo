@@ -1,0 +1,1 @@
+const fs = require('fs'); let html = fs.readFileSync('index.html', 'utf8'); html = html.replace(/<link rel=\"stylesheet\" crossorigin=\"" href=\"https:\/\/conesportabombom.netlify.app\/assets\/index-CDACE0lI.css\">/g, '<link rel=\"stylesheet\" href=\"./index.css\">'); fs.writeFileSync('index.html', html, 'utf8');
