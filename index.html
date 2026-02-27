@@ -34,7 +34,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -783,7 +783,8 @@
             comemorativa está chegando</span>
           <div
             class="flex items-center gap-1 bg-primary-foreground/20 rounded-full px-3 py-0.5 sm:px-4 sm:py-1 font-mono text-sm sm:text-base tracking-wider backdrop-blur-sm">
-            <span>23</span>:<span>59</span>:<span>45</span></div>
+            <span>23</span>:<span>59</span>:<span>45</span>
+          </div>
         </div>
       </div>
       <section
@@ -830,19 +831,23 @@
             <div
               class="rounded-2xl overflow-hidden border-2 border-primary/15 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all">
               <img src="https://conesportabombom.netlify.app/assets/modelo-1-kOnnk8ig.png" alt="Modelo 1"
-                class="w-full h-auto" loading="lazy"></div>
+                class="w-full h-auto" loading="lazy">
+            </div>
             <div
               class="rounded-2xl overflow-hidden border-2 border-primary/15 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all">
               <img src="https://conesportabombom.netlify.app/assets/modelo-2-CIOjagNk.jpeg" alt="Modelo 2"
-                class="w-full h-auto" loading="lazy"></div>
+                class="w-full h-auto" loading="lazy">
+            </div>
             <div
               class="rounded-2xl overflow-hidden border-2 border-primary/15 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all">
               <img src="https://conesportabombom.netlify.app/assets/modelo-3-DqJU1ieD.png" alt="Modelo 3"
-                class="w-full h-auto" loading="lazy"></div>
+                class="w-full h-auto" loading="lazy">
+            </div>
             <div
               class="rounded-2xl overflow-hidden border-2 border-primary/15 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all">
               <img src="https://conesportabombom.netlify.app/assets/modelo-4-OjEL334w.png" alt="Modelo 4"
-                class="w-full h-auto" loading="lazy"></div>
+                class="w-full h-auto" loading="lazy">
+            </div>
           </div>
         </div>
       </section>
@@ -1051,7 +1056,8 @@
               <path d="M12 8v13"></path>
               <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
               <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path>
-            </svg></div>
+            </svg>
+          </div>
           <h2 class="text-3xl sm:text-5xl font-bold text-foreground mb-8 sm:mb-10">O Que Você Vai Receber</h2>
           <div class="space-y-4">
             <div
@@ -1252,7 +1258,8 @@
                 d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
               </path>
               <path d="m9 12 2 2 4-4"></path>
-            </svg></div>
+            </svg>
+          </div>
           <h2 class="text-3xl sm:text-5xl font-bold text-foreground mb-4">Garantia de 7 Dias</h2>
           <p class="font-serif text-lg text-muted-foreground mb-6 max-w-lg mx-auto italic leading-relaxed">Você tem 7
             dias para testar. Se não gostar, não for para você ou simplesmente mudar de ideia, devolvemos <strong
@@ -1378,38 +1385,32 @@
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           // Setup Carousel
-          const carouselContainer = document.querySelector('[role="carousel"] .overflow-hidden > div');
-          const prevButton = document.querySelector('[role="carousel"] button:first-of-type');
-          const nextButton = document.querySelector('[role="carousel"] button:last-of-type');
+          const carouselContainer = document.querySelector('[aria-roledescription="carousel"] .overflow-hidden > div');
+          const prevButton = document.querySelector('[aria-roledescription="carousel"] > button:first-of-type');
+          const nextButton = document.querySelector('[aria-roledescription="carousel"] > button:last-of-type');
 
           if (carouselContainer && prevButton && nextButton) {
             let currentIndex = 0;
             const slides = carouselContainer.querySelectorAll('[role="group"]');
             const numSlides = slides.length;
 
-            // Use a simple pixel value based on standard image widths in carousels, or calculate it.
-            // It looks like each slide takes 50% width on sm screens or 100% on small.
             const updateCarousel = () => {
-              // Get the width of one slide
               const slideWidth = slides[0].offsetWidth;
-              // Apply transformation to the track
               carouselContainer.style.transform = `translate3d(-${currentIndex * slideWidth}px, 0px, 0px)`;
-              carouselContainer.style.transition = 'transform 0.3s ease-in-out';
+              carouselContainer.style.transition = 'transform 0.4s ease-in-out';
             };
 
-            // Reset the hardcoded transforms on the slides themselves to let flexbox and our container transform handle layout
             slides.forEach(slide => {
               slide.style.transform = 'none';
             });
 
-            // Initialize display
             updateCarousel();
 
             nextButton.addEventListener('click', () => {
               if (currentIndex < numSlides - 1) {
                 currentIndex++;
               } else {
-                currentIndex = 0; // Loop back to start
+                currentIndex = 0;
               }
               updateCarousel();
             });
@@ -1418,22 +1419,20 @@
               if (currentIndex > 0) {
                 currentIndex--;
               } else {
-                currentIndex = numSlides - 1; // Loop to end
+                currentIndex = numSlides - 1;
               }
               updateCarousel();
             });
 
-            // Auto-slide every 5 seconds
             setInterval(() => {
               if (currentIndex < numSlides - 1) {
                 currentIndex++;
               } else {
-                currentIndex = 0; // Loop back to start
+                currentIndex = 0;
               }
               updateCarousel();
-            }, 5000);
+            }, 3000);
 
-            // Update on resize
             window.addEventListener('resize', updateCarousel);
           }
         });
